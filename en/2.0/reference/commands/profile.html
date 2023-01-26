@@ -1,0 +1,714 @@
+
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>conan profile &mdash; conan 2.0.0-beta documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/conan-favicon.png"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+
+  
+    <link rel="stylesheet" href="../../_static/css/signup.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../_static/css/search.css" type="text/css" />
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="conan 2.0.0-beta documentation" href="../../index.html"/>
+        <link rel="up" title="Commands" href="../commands.html"/>
+        <link rel="next" title="conan remove" href="remove.html"/>
+        <link rel="prev" title="conan lock merge" href="lock/merge.html"/>
+
+ <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WK44ZFM');</script>
+<!-- End Google Tag Manager -->
+ 
+
+
+
+</script>
+
+
+  
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="https://conan.io">
+          
+
+          
+            
+            <img src="../../_static/conan-logo-2.0.png" class="logo" />
+          
+          </a>
+
+            
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../whatsnew.html">What’s new in Conan 2.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integrations.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../reference.html">Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../commands.html">Commands</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="cache.html">conan cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config.html">conan config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graph.html">conan graph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="inspect.html">conan inspect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="install.html">conan install</a></li>
+<li class="toctree-l3"><a class="reference internal" href="list.html">conan list</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lock.html">conan lock</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">conan profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#conan-profile-detect">conan profile detect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#conan-profile-list">conan profile list</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#conan-profile-path">conan profile path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#conan-profile-show">conan profile show</a></li>
+<li class="toctree-l3"><a class="reference internal" href="remove.html">conan remove</a></li>
+<li class="toctree-l3"><a class="reference internal" href="remote.html">conan remote</a></li>
+<li class="toctree-l3"><a class="reference internal" href="search.html">conan search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="create.html">conan create</a></li>
+<li class="toctree-l3"><a class="reference internal" href="export.html">conan export</a></li>
+<li class="toctree-l3"><a class="reference internal" href="new.html">conan new</a></li>
+<li class="toctree-l3"><a class="reference internal" href="test.html">conan test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upload.html">conan upload</a></li>
+<li class="toctree-l3"><a class="reference internal" href="build.html">conan build</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../conanfile_txt.html">conanfile.txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../conanfile.html">conanfile.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tools.html">Recipe tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extensions.html">Extensions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
+</ul>
+
+            
+          
+          <div class="dark_newsletter-div">
+             <p>Sign up for release updates:</p>
+              <script src="https://app-lon04.marketo.com/js/forms2/js/forms2.min.js"></script>
+              <form id="mktoForm_1479"></form>
+              <script>MktoForms2.loadForm("https://app-lon04.marketo.com", "256-FNZ-187", 1479);</script>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">conan</a>
+        
+      </nav>
+
+
+      
+      <script>
+        var reldir = "../../index.html".replace("index.html","").replace("#", "");
+      </script>
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation" id="breadcrumbs">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../reference.html">Reference</a> &raquo;</li>
+        
+          <li><a href="../commands.html">Commands</a> &raquo;</li>
+        
+      <li>conan profile</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/conan-io/docs/blob/develop2/reference/commands/profile.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+          <!--<select id="search" name="state" multiple="true" onchange="window.location = reldir + this.value;" style="width:90%"></select>
+          <hr/>-->
+          <!--<div class="admonition important">
+            <p class="admonition-title">Announcement</p>
+            <p>Recipe Hacking no. 2! Building on what we learnt during the first installment we will be working on more Conan 2.0 Migration! We'll start by reviewing some open pull requests and hopefully tackle a CMake example. <a
+            href=https://jfrog.zoom.us/webinar/register/WN_grFhqH0yRBeIfJmBvQoPJw> Register here to attend.</a></p>
+          </div>-->
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="conan-profile">
+<span id="reference-commands-profile"></span><h1>conan profile<a class="headerlink" href="#conan-profile" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conan<span class="w"> </span>profile<span class="w"> </span>--help
+usage:<span class="w"> </span>conan<span class="w"> </span>profile<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>-v<span class="w"> </span><span class="o">[</span>V<span class="o">]]</span><span class="w"> </span><span class="o">[</span>--logger<span class="o">]</span><span class="w"> </span><span class="o">{</span>detect,list,path,show<span class="o">}</span><span class="w"> </span>...
+
+Manages<span class="w"> </span>profiles
+
+positional<span class="w"> </span>arguments:
+<span class="o">{</span>detect,list,path,show<span class="o">}</span>
+<span class="w">                        </span>sub-command<span class="w"> </span><span class="nb">help</span>
+<span class="w">    </span>detect<span class="w">              </span>Detect<span class="w"> </span>default<span class="w"> </span>profile
+<span class="w">    </span>list<span class="w">                </span>List<span class="w"> </span>all<span class="w"> </span>profiles<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>cache
+<span class="w">    </span>path<span class="w">                </span>Show<span class="w"> </span>profile<span class="w"> </span>path<span class="w"> </span>location
+<span class="w">    </span>show<span class="w">                </span>Show<span class="w"> </span>profiles
+
+optional<span class="w"> </span>arguments:
+-h,<span class="w"> </span>--help<span class="w">            </span>show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
+-v<span class="w"> </span><span class="o">[</span>V<span class="o">]</span><span class="w">                </span>Level<span class="w"> </span>of<span class="w"> </span>detail<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>output.<span class="w"> </span>Valid<span class="w"> </span>options<span class="w"> </span>from<span class="w"> </span>less<span class="w"> </span>verbose<span class="w"> </span>to<span class="w"> </span>more<span class="w"> </span>verbose:<span class="w"> </span>-vquiet,<span class="w"> </span>-verror,<span class="w"> </span>-vwarning,<span class="w"> </span>-vnotice,<span class="w"> </span>-vstatus,<span class="w"> </span>-v<span class="w"> </span>or<span class="w"> </span>-vverbose,<span class="w"> </span>-vv<span class="w"> </span>or
+<span class="w">                        </span>-vdebug,<span class="w"> </span>-vvv<span class="w"> </span>or<span class="w"> </span>-vtrace
+--logger<span class="w">              </span>Show<span class="w"> </span>the<span class="w"> </span>output<span class="w"> </span>with<span class="w"> </span>log<span class="w"> </span>format,<span class="w"> </span>with<span class="w"> </span>time,<span class="w"> </span><span class="nb">type</span><span class="w"> </span>and<span class="w"> </span>message.
+</pre></div>
+</div>
+</div>
+<div class="section" id="conan-profile-detect">
+<h1>conan profile detect<a class="headerlink" href="#conan-profile-detect" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conan<span class="w"> </span>profile<span class="w"> </span>detect<span class="w"> </span>--help
+usage:<span class="w"> </span>conan<span class="w"> </span>profile<span class="w"> </span>detect<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>-v<span class="w"> </span><span class="o">[</span>V<span class="o">]]</span><span class="w"> </span><span class="o">[</span>--logger<span class="o">]</span><span class="w"> </span><span class="o">[</span>--name<span class="w"> </span>NAME<span class="o">]</span><span class="w"> </span><span class="o">[</span>-f<span class="o">]</span>
+
+Detect<span class="w"> </span>default<span class="w"> </span>profile
+
+optional<span class="w"> </span>arguments:
+-h,<span class="w"> </span>--help<span class="w">   </span>show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
+-v<span class="w"> </span><span class="o">[</span>V<span class="o">]</span><span class="w">       </span>Level<span class="w"> </span>of<span class="w"> </span>detail<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>output.<span class="w"> </span>Valid<span class="w"> </span>options<span class="w"> </span>from<span class="w"> </span>less<span class="w"> </span>verbose<span class="w"> </span>to<span class="w"> </span>more<span class="w"> </span>verbose:<span class="w"> </span>-vquiet,<span class="w"> </span>-verror,<span class="w"> </span>-vwarning,<span class="w"> </span>-vnotice,<span class="w"> </span>-vstatus,<span class="w"> </span>-v<span class="w"> </span>or<span class="w"> </span>-vverbose,<span class="w"> </span>-vv<span class="w"> </span>or<span class="w"> </span>-vdebug,
+<span class="w">            </span>-vvv<span class="w"> </span>or<span class="w"> </span>-vtrace
+--logger<span class="w">     </span>Show<span class="w"> </span>the<span class="w"> </span>output<span class="w"> </span>with<span class="w"> </span>log<span class="w"> </span>format,<span class="w"> </span>with<span class="w"> </span>time,<span class="w"> </span><span class="nb">type</span><span class="w"> </span>and<span class="w"> </span>message.
+--name<span class="w"> </span>NAME<span class="w">  </span>Profile<span class="w"> </span>name,<span class="w"> </span><span class="s1">&#39;default&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span>not<span class="w"> </span>specified
+-f,<span class="w"> </span>--force<span class="w">  </span>Overwrite<span class="w"> </span><span class="k">if</span><span class="w"> </span>exists
+</pre></div>
+</div>
+</div>
+<div class="section" id="conan-profile-list">
+<h1>conan profile list<a class="headerlink" href="#conan-profile-list" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conan<span class="w"> </span>profile<span class="w"> </span>list<span class="w"> </span>--help
+usage:<span class="w"> </span>conan<span class="w"> </span>profile<span class="w"> </span>list<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>-f<span class="w"> </span>FORMAT<span class="o">]</span><span class="w"> </span><span class="o">[</span>-v<span class="w"> </span><span class="o">[</span>V<span class="o">]]</span><span class="w"> </span><span class="o">[</span>--logger<span class="o">]</span>
+
+List<span class="w"> </span>all<span class="w"> </span>profiles<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>cache
+
+optional<span class="w"> </span>arguments:
+-h,<span class="w"> </span>--help<span class="w">            </span>show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
+-f<span class="w"> </span>FORMAT,<span class="w"> </span>--format<span class="w"> </span>FORMAT
+<span class="w">                        </span>Select<span class="w"> </span>the<span class="w"> </span>output<span class="w"> </span>format:<span class="w"> </span>json
+-v<span class="w"> </span><span class="o">[</span>V<span class="o">]</span><span class="w">                </span>Level<span class="w"> </span>of<span class="w"> </span>detail<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>output.<span class="w"> </span>Valid<span class="w"> </span>options<span class="w"> </span>from<span class="w"> </span>less<span class="w"> </span>verbose<span class="w"> </span>to<span class="w"> </span>more<span class="w"> </span>verbose:<span class="w"> </span>-vquiet,<span class="w"> </span>-verror,<span class="w"> </span>-vwarning,<span class="w"> </span>-vnotice,<span class="w"> </span>-vstatus,<span class="w"> </span>-v<span class="w"> </span>or<span class="w"> </span>-vverbose,<span class="w"> </span>-vv<span class="w"> </span>or
+<span class="w">                        </span>-vdebug,<span class="w"> </span>-vvv<span class="w"> </span>or<span class="w"> </span>-vtrace
+--logger<span class="w">              </span>Show<span class="w"> </span>the<span class="w"> </span>output<span class="w"> </span>with<span class="w"> </span>log<span class="w"> </span>format,<span class="w"> </span>with<span class="w"> </span>time,<span class="w"> </span><span class="nb">type</span><span class="w"> </span>and<span class="w"> </span>message.
+</pre></div>
+</div>
+</div>
+<div class="section" id="conan-profile-path">
+<h1>conan profile path<a class="headerlink" href="#conan-profile-path" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conan<span class="w"> </span>profile<span class="w"> </span>path<span class="w"> </span>--help
+usage:<span class="w"> </span>conan<span class="w"> </span>profile<span class="w"> </span>path<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>-v<span class="w"> </span><span class="o">[</span>V<span class="o">]]</span><span class="w"> </span><span class="o">[</span>--logger<span class="o">]</span><span class="w"> </span><span class="o">[</span>-o<span class="w"> </span>OPTIONS_HOST<span class="o">]</span><span class="w"> </span><span class="o">[</span>-o:b<span class="w"> </span>OPTIONS_BUILD<span class="o">]</span><span class="w"> </span><span class="o">[</span>-o:h<span class="w"> </span>OPTIONS_HOST<span class="o">]</span><span class="w"> </span><span class="o">[</span>-pr<span class="w"> </span>PROFILE_HOST<span class="o">]</span><span class="w"> </span><span class="o">[</span>-pr:b<span class="w"> </span>PROFILE_BUILD<span class="o">]</span><span class="w"> </span><span class="o">[</span>-pr:h<span class="w"> </span>PROFILE_HOST<span class="o">]</span>
+<span class="w">                        </span><span class="o">[</span>-s<span class="w"> </span>SETTINGS_HOST<span class="o">]</span><span class="w"> </span><span class="o">[</span>-s:b<span class="w"> </span>SETTINGS_BUILD<span class="o">]</span><span class="w"> </span><span class="o">[</span>-s:h<span class="w"> </span>SETTINGS_HOST<span class="o">]</span><span class="w"> </span><span class="o">[</span>-c<span class="w"> </span>CONF_HOST<span class="o">]</span><span class="w"> </span><span class="o">[</span>-c:b<span class="w"> </span>CONF_BUILD<span class="o">]</span><span class="w"> </span><span class="o">[</span>-c:h<span class="w"> </span>CONF_HOST<span class="o">]</span>
+<span class="w">                        </span>name
+
+Show<span class="w"> </span>profile<span class="w"> </span>path<span class="w"> </span>location
+
+positional<span class="w"> </span>arguments:
+name<span class="w">                  </span>Profile<span class="w"> </span>name
+
+optional<span class="w"> </span>arguments:
+-h,<span class="w"> </span>--help<span class="w">            </span>show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
+-v<span class="w"> </span><span class="o">[</span>V<span class="o">]</span><span class="w">                </span>Level<span class="w"> </span>of<span class="w"> </span>detail<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>output.<span class="w"> </span>Valid<span class="w"> </span>options<span class="w"> </span>from<span class="w"> </span>less<span class="w"> </span>verbose<span class="w"> </span>to<span class="w"> </span>more<span class="w"> </span>verbose:<span class="w"> </span>-vquiet,<span class="w"> </span>-verror,<span class="w"> </span>-vwarning,<span class="w"> </span>-vnotice,<span class="w"> </span>-vstatus,<span class="w"> </span>-v<span class="w"> </span>or<span class="w"> </span>-vverbose,<span class="w"> </span>-vv<span class="w"> </span>or
+<span class="w">                        </span>-vdebug,<span class="w"> </span>-vvv<span class="w"> </span>or<span class="w"> </span>-vtrace
+--logger<span class="w">              </span>Show<span class="w"> </span>the<span class="w"> </span>output<span class="w"> </span>with<span class="w"> </span>log<span class="w"> </span>format,<span class="w"> </span>with<span class="w"> </span>time,<span class="w"> </span><span class="nb">type</span><span class="w"> </span>and<span class="w"> </span>message.
+-o<span class="w"> </span>OPTIONS_HOST,<span class="w"> </span>--options<span class="w"> </span>OPTIONS_HOST
+<span class="w">                        </span>Define<span class="w"> </span>options<span class="w"> </span>values<span class="w"> </span><span class="o">(</span>host<span class="w"> </span>machine<span class="o">)</span>,<span class="w"> </span>e.g.:<span class="w"> </span>-o<span class="w"> </span>Pkg:with_qt<span class="o">=</span><span class="nb">true</span>
+-o:b<span class="w"> </span>OPTIONS_BUILD,<span class="w"> </span>--options:build<span class="w"> </span>OPTIONS_BUILD
+<span class="w">                        </span>Define<span class="w"> </span>options<span class="w"> </span>values<span class="w"> </span><span class="o">(</span>build<span class="w"> </span>machine<span class="o">)</span>,<span class="w"> </span>e.g.:<span class="w"> </span>-o:b<span class="w"> </span>Pkg:with_qt<span class="o">=</span><span class="nb">true</span>
+-o:h<span class="w"> </span>OPTIONS_HOST,<span class="w"> </span>--options:host<span class="w"> </span>OPTIONS_HOST
+<span class="w">                        </span>Define<span class="w"> </span>options<span class="w"> </span>values<span class="w"> </span><span class="o">(</span>host<span class="w"> </span>machine<span class="o">)</span>,<span class="w"> </span>e.g.:<span class="w"> </span>-o:h<span class="w"> </span>Pkg:with_qt<span class="o">=</span><span class="nb">true</span>
+-pr<span class="w"> </span>PROFILE_HOST,<span class="w"> </span>--profile<span class="w"> </span>PROFILE_HOST
+<span class="w">                        </span>Apply<span class="w"> </span>the<span class="w"> </span>specified<span class="w"> </span>profile<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>host<span class="w"> </span>machine
+-pr:b<span class="w"> </span>PROFILE_BUILD,<span class="w"> </span>--profile:build<span class="w"> </span>PROFILE_BUILD
+<span class="w">                        </span>Apply<span class="w"> </span>the<span class="w"> </span>specified<span class="w"> </span>profile<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>build<span class="w"> </span>machine
+-pr:h<span class="w"> </span>PROFILE_HOST,<span class="w"> </span>--profile:host<span class="w"> </span>PROFILE_HOST
+<span class="w">                        </span>Apply<span class="w"> </span>the<span class="w"> </span>specified<span class="w"> </span>profile<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>host<span class="w"> </span>machine
+-s<span class="w"> </span>SETTINGS_HOST,<span class="w"> </span>--settings<span class="w"> </span>SETTINGS_HOST
+<span class="w">                        </span>Settings<span class="w"> </span>to<span class="w"> </span>build<span class="w"> </span>the<span class="w"> </span>package,<span class="w"> </span>overwriting<span class="w"> </span>the<span class="w"> </span>defaults<span class="w"> </span><span class="o">(</span>host<span class="w"> </span>machine<span class="o">)</span>.<span class="w"> </span>e.g.:<span class="w"> </span>-s<span class="w"> </span><span class="nv">compiler</span><span class="o">=</span>gcc
+-s:b<span class="w"> </span>SETTINGS_BUILD,<span class="w"> </span>--settings:build<span class="w"> </span>SETTINGS_BUILD
+<span class="w">                        </span>Settings<span class="w"> </span>to<span class="w"> </span>build<span class="w"> </span>the<span class="w"> </span>package,<span class="w"> </span>overwriting<span class="w"> </span>the<span class="w"> </span>defaults<span class="w"> </span><span class="o">(</span>build<span class="w"> </span>machine<span class="o">)</span>.<span class="w"> </span>e.g.:<span class="w"> </span>-s:b<span class="w"> </span><span class="nv">compiler</span><span class="o">=</span>gcc
+-s:h<span class="w"> </span>SETTINGS_HOST,<span class="w"> </span>--settings:host<span class="w"> </span>SETTINGS_HOST
+<span class="w">                        </span>Settings<span class="w"> </span>to<span class="w"> </span>build<span class="w"> </span>the<span class="w"> </span>package,<span class="w"> </span>overwriting<span class="w"> </span>the<span class="w"> </span>defaults<span class="w"> </span><span class="o">(</span>host<span class="w"> </span>machine<span class="o">)</span>.<span class="w"> </span>e.g.:<span class="w"> </span>-s:h<span class="w"> </span><span class="nv">compiler</span><span class="o">=</span>gcc
+-c<span class="w"> </span>CONF_HOST,<span class="w"> </span>--conf<span class="w"> </span>CONF_HOST
+<span class="w">                        </span>Configuration<span class="w"> </span>to<span class="w"> </span>build<span class="w"> </span>the<span class="w"> </span>package,<span class="w"> </span>overwriting<span class="w"> </span>the<span class="w"> </span>defaults<span class="w"> </span><span class="o">(</span>host<span class="w"> </span>machine<span class="o">)</span>.<span class="w"> </span>e.g.:<span class="w"> </span>-c<span class="w"> </span>tools.cmake.cmaketoolchain:generator<span class="o">=</span>Xcode
+-c:b<span class="w"> </span>CONF_BUILD,<span class="w"> </span>--conf:build<span class="w"> </span>CONF_BUILD
+<span class="w">                        </span>Configuration<span class="w"> </span>to<span class="w"> </span>build<span class="w"> </span>the<span class="w"> </span>package,<span class="w"> </span>overwriting<span class="w"> </span>the<span class="w"> </span>defaults<span class="w"> </span><span class="o">(</span>build<span class="w"> </span>machine<span class="o">)</span>.<span class="w"> </span>e.g.:<span class="w"> </span>-c:b<span class="w"> </span>tools.cmake.cmaketoolchain:generator<span class="o">=</span>Xcode
+-c:h<span class="w"> </span>CONF_HOST,<span class="w"> </span>--conf:host<span class="w"> </span>CONF_HOST
+<span class="w">                        </span>Configuration<span class="w"> </span>to<span class="w"> </span>build<span class="w"> </span>the<span class="w"> </span>package,<span class="w"> </span>overwriting<span class="w"> </span>the<span class="w"> </span>defaults<span class="w"> </span><span class="o">(</span>host<span class="w"> </span>machine<span class="o">)</span>.<span class="w"> </span>e.g.:<span class="w"> </span>-c:h<span class="w"> </span>tools.cmake.cmaketoolchain:generator<span class="o">=</span>Xcode
+</pre></div>
+</div>
+</div>
+<div class="section" id="conan-profile-show">
+<h1>conan profile show<a class="headerlink" href="#conan-profile-show" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conan<span class="w"> </span>profile<span class="w"> </span>show<span class="w"> </span>--help
+usage:<span class="w"> </span>conan<span class="w"> </span>profile<span class="w"> </span>show<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>-v<span class="w"> </span><span class="o">[</span>V<span class="o">]]</span><span class="w"> </span><span class="o">[</span>--logger<span class="o">]</span><span class="w"> </span><span class="o">[</span>-o<span class="w"> </span>OPTIONS_HOST<span class="o">]</span><span class="w"> </span><span class="o">[</span>-o:b<span class="w"> </span>OPTIONS_BUILD<span class="o">]</span><span class="w"> </span><span class="o">[</span>-o:h<span class="w"> </span>OPTIONS_HOST<span class="o">]</span><span class="w"> </span><span class="o">[</span>-pr<span class="w"> </span>PROFILE_HOST<span class="o">]</span><span class="w"> </span><span class="o">[</span>-pr:b<span class="w"> </span>PROFILE_BUILD<span class="o">]</span><span class="w"> </span><span class="o">[</span>-pr:h<span class="w"> </span>PROFILE_HOST<span class="o">]</span>
+<span class="w">                        </span><span class="o">[</span>-s<span class="w"> </span>SETTINGS_HOST<span class="o">]</span><span class="w"> </span><span class="o">[</span>-s:b<span class="w"> </span>SETTINGS_BUILD<span class="o">]</span><span class="w"> </span><span class="o">[</span>-s:h<span class="w"> </span>SETTINGS_HOST<span class="o">]</span><span class="w"> </span><span class="o">[</span>-c<span class="w"> </span>CONF_HOST<span class="o">]</span><span class="w"> </span><span class="o">[</span>-c:b<span class="w"> </span>CONF_BUILD<span class="o">]</span><span class="w"> </span><span class="o">[</span>-c:h<span class="w"> </span>CONF_HOST<span class="o">]</span>
+
+Show<span class="w"> </span>profiles
+
+optional<span class="w"> </span>arguments:
+-h,<span class="w"> </span>--help<span class="w">            </span>show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
+-v<span class="w"> </span><span class="o">[</span>V<span class="o">]</span><span class="w">                </span>Level<span class="w"> </span>of<span class="w"> </span>detail<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>output.<span class="w"> </span>Valid<span class="w"> </span>options<span class="w"> </span>from<span class="w"> </span>less<span class="w"> </span>verbose<span class="w"> </span>to<span class="w"> </span>more<span class="w"> </span>verbose:<span class="w"> </span>-vquiet,<span class="w"> </span>-verror,<span class="w"> </span>-vwarning,<span class="w"> </span>-vnotice,<span class="w"> </span>-vstatus,<span class="w"> </span>-v<span class="w"> </span>or<span class="w"> </span>-vverbose,<span class="w"> </span>-vv<span class="w"> </span>or
+<span class="w">                        </span>-vdebug,<span class="w"> </span>-vvv<span class="w"> </span>or<span class="w"> </span>-vtrace
+--logger<span class="w">              </span>Show<span class="w"> </span>the<span class="w"> </span>output<span class="w"> </span>with<span class="w"> </span>log<span class="w"> </span>format,<span class="w"> </span>with<span class="w"> </span>time,<span class="w"> </span><span class="nb">type</span><span class="w"> </span>and<span class="w"> </span>message.
+-o<span class="w"> </span>OPTIONS_HOST,<span class="w"> </span>--options<span class="w"> </span>OPTIONS_HOST
+<span class="w">                        </span>Define<span class="w"> </span>options<span class="w"> </span>values<span class="w"> </span><span class="o">(</span>host<span class="w"> </span>machine<span class="o">)</span>,<span class="w"> </span>e.g.:<span class="w"> </span>-o<span class="w"> </span>Pkg:with_qt<span class="o">=</span><span class="nb">true</span>
+-o:b<span class="w"> </span>OPTIONS_BUILD,<span class="w"> </span>--options:build<span class="w"> </span>OPTIONS_BUILD
+<span class="w">                        </span>Define<span class="w"> </span>options<span class="w"> </span>values<span class="w"> </span><span class="o">(</span>build<span class="w"> </span>machine<span class="o">)</span>,<span class="w"> </span>e.g.:<span class="w"> </span>-o:b<span class="w"> </span>Pkg:with_qt<span class="o">=</span><span class="nb">true</span>
+-o:h<span class="w"> </span>OPTIONS_HOST,<span class="w"> </span>--options:host<span class="w"> </span>OPTIONS_HOST
+<span class="w">                        </span>Define<span class="w"> </span>options<span class="w"> </span>values<span class="w"> </span><span class="o">(</span>host<span class="w"> </span>machine<span class="o">)</span>,<span class="w"> </span>e.g.:<span class="w"> </span>-o:h<span class="w"> </span>Pkg:with_qt<span class="o">=</span><span class="nb">true</span>
+-pr<span class="w"> </span>PROFILE_HOST,<span class="w"> </span>--profile<span class="w"> </span>PROFILE_HOST
+<span class="w">                        </span>Apply<span class="w"> </span>the<span class="w"> </span>specified<span class="w"> </span>profile<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>host<span class="w"> </span>machine
+-pr:b<span class="w"> </span>PROFILE_BUILD,<span class="w"> </span>--profile:build<span class="w"> </span>PROFILE_BUILD
+<span class="w">                        </span>Apply<span class="w"> </span>the<span class="w"> </span>specified<span class="w"> </span>profile<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>build<span class="w"> </span>machine
+-pr:h<span class="w"> </span>PROFILE_HOST,<span class="w"> </span>--profile:host<span class="w"> </span>PROFILE_HOST
+<span class="w">                        </span>Apply<span class="w"> </span>the<span class="w"> </span>specified<span class="w"> </span>profile<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>host<span class="w"> </span>machine
+-s<span class="w"> </span>SETTINGS_HOST,<span class="w"> </span>--settings<span class="w"> </span>SETTINGS_HOST
+<span class="w">                        </span>Settings<span class="w"> </span>to<span class="w"> </span>build<span class="w"> </span>the<span class="w"> </span>package,<span class="w"> </span>overwriting<span class="w"> </span>the<span class="w"> </span>defaults<span class="w"> </span><span class="o">(</span>host<span class="w"> </span>machine<span class="o">)</span>.<span class="w"> </span>e.g.:<span class="w"> </span>-s<span class="w"> </span><span class="nv">compiler</span><span class="o">=</span>gcc
+-s:b<span class="w"> </span>SETTINGS_BUILD,<span class="w"> </span>--settings:build<span class="w"> </span>SETTINGS_BUILD
+<span class="w">                        </span>Settings<span class="w"> </span>to<span class="w"> </span>build<span class="w"> </span>the<span class="w"> </span>package,<span class="w"> </span>overwriting<span class="w"> </span>the<span class="w"> </span>defaults<span class="w"> </span><span class="o">(</span>build<span class="w"> </span>machine<span class="o">)</span>.<span class="w"> </span>e.g.:<span class="w"> </span>-s:b<span class="w"> </span><span class="nv">compiler</span><span class="o">=</span>gcc
+-s:h<span class="w"> </span>SETTINGS_HOST,<span class="w"> </span>--settings:host<span class="w"> </span>SETTINGS_HOST
+<span class="w">                        </span>Settings<span class="w"> </span>to<span class="w"> </span>build<span class="w"> </span>the<span class="w"> </span>package,<span class="w"> </span>overwriting<span class="w"> </span>the<span class="w"> </span>defaults<span class="w"> </span><span class="o">(</span>host<span class="w"> </span>machine<span class="o">)</span>.<span class="w"> </span>e.g.:<span class="w"> </span>-s:h<span class="w"> </span><span class="nv">compiler</span><span class="o">=</span>gcc
+-c<span class="w"> </span>CONF_HOST,<span class="w"> </span>--conf<span class="w"> </span>CONF_HOST
+<span class="w">                        </span>Configuration<span class="w"> </span>to<span class="w"> </span>build<span class="w"> </span>the<span class="w"> </span>package,<span class="w"> </span>overwriting<span class="w"> </span>the<span class="w"> </span>defaults<span class="w"> </span><span class="o">(</span>host<span class="w"> </span>machine<span class="o">)</span>.<span class="w"> </span>e.g.:<span class="w"> </span>-c<span class="w"> </span>tools.cmake.cmaketoolchain:generator<span class="o">=</span>Xcode
+-c:b<span class="w"> </span>CONF_BUILD,<span class="w"> </span>--conf:build<span class="w"> </span>CONF_BUILD
+<span class="w">                        </span>Configuration<span class="w"> </span>to<span class="w"> </span>build<span class="w"> </span>the<span class="w"> </span>package,<span class="w"> </span>overwriting<span class="w"> </span>the<span class="w"> </span>defaults<span class="w"> </span><span class="o">(</span>build<span class="w"> </span>machine<span class="o">)</span>.<span class="w"> </span>e.g.:<span class="w"> </span>-c:b<span class="w"> </span>tools.cmake.cmaketoolchain:generator<span class="o">=</span>Xcode
+-c:h<span class="w"> </span>CONF_HOST,<span class="w"> </span>--conf:host<span class="w"> </span>CONF_HOST
+<span class="w">                        </span>Configuration<span class="w"> </span>to<span class="w"> </span>build<span class="w"> </span>the<span class="w"> </span>package,<span class="w"> </span>overwriting<span class="w"> </span>the<span class="w"> </span>defaults<span class="w"> </span><span class="o">(</span>host<span class="w"> </span>machine<span class="o">)</span>.<span class="w"> </span>e.g.:<span class="w"> </span>-c:h<span class="w"> </span>tools.cmake.cmaketoolchain:generator<span class="o">=</span>Xcode
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="remove.html" class="btn btn-neutral float-right" title="conan remove" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lock/merge.html" class="btn btn-neutral" title="conan lock merge" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2022, JFrog.
+      Last updated on Jan 26, 2023.
+      <span><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></span>
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <!--<span class="fa fa-pencil-square-o"> Other versions:</span> -->
+      Version: 2.0
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          
+            <dd><a href="/en/1.57/index.html">1.57</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.56/index.html">1.56</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.55/index.html">1.55</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.54/index.html">1.54</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.53/index.html">1.53</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.52/index.html">1.52</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.51/index.html">1.51</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.50/index.html">1.50</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.49/index.html">1.49</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.48/index.html">1.48</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.47/index.html">1.47</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.46/index.html">1.46</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.45/index.html">1.45</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.44/index.html">1.44</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.43/index.html">1.43</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.42/index.html">1.42</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.41/index.html">1.41</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.40/index.html">1.40</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.39/index.html">1.39</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.38/index.html">1.38</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.37/index.html">1.37</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.36/index.html">1.36</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.35/index.html">1.35</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.34/index.html">1.34</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.33/index.html">1.33</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.32/index.html">1.32</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.31/index.html">1.31</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.30/index.html">1.30</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.29/index.html">1.29</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.28/index.html">1.28</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.27/index.html">1.27</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.26/index.html">1.26</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.25/index.html">1.25</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.24/index.html">1.24</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.23/index.html">1.23</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.22/index.html">1.22</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.21/index.html">1.21</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.20/index.html">1.20</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.19/index.html">1.19</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.18/index.html">1.18</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.17/index.html">1.17</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.16/index.html">1.16</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.15/index.html">1.15</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.14/index.html">1.14</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.13/index.html">1.13</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.12/index.html">1.12</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.11/index.html">1.11</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.10/index.html">1.10</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.9/index.html">1.9</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.8/index.html">1.8</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.7/index.html">1.7</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.6/index.html">1.6</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.5/index.html">1.5</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.4/index.html">1.4</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.3/index.html">1.3</a></dd>
+          
+        
+          
+            <dd><a href="/en/2.0/index.html">2.0</a></dd>
+          
+        
+          
+            <dd><a href="/en/latest/index.html">latest</a></dd>
+          
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="/en/2.0/conan.pdf">PDF</a></dd>
+        
+      </dl>
+    </div>
+  </div>
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'2.0.0-beta',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/language_data.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  <!-- <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <script src="../../_static/js/modernizr.min.js"></script>
+  <script src="../../_static/js/search.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
+-->
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+
+
+  <script>
+    // initSearch("2.0");
+  </script>
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WK44ZFM" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+
+ 
+
+
+</body>
+</html>
